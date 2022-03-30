@@ -3,6 +3,7 @@ package es.cristiangg.jarron;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -17,7 +18,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        StackPane root = new StackPane();
+//        StackPane root = new StackPane();
+        HBox root = new HBox();
+        root.setAlignment(Pos.CENTER);
+        root.setSpacing(10);
+        
         var scene = new Scene(root, 640, 480);
         stage.setScene(scene);
         stage.show();
@@ -34,29 +39,35 @@ public class App extends Application {
         jarron3.setPrecio(25.10f);
         jarron3.setPrecio(25.10F);
         
-        ListaJarron Listajarron = new ListaJarron();
-        Listajarron.getListaJarron().add(jarron1);
-        Listajarron.getListaJarron().add(jarron2);
-        Listajarron.getListaJarron().add(jarron3); 
+        Jarrones jarrones = new Jarrones();
+        jarrones.getListaJarron().add(jarron1);
+        jarrones.getListaJarron().add(jarron2);
+        jarrones.getListaJarron().add(jarron3); 
         
-        HBox hbox = new HBox(100);
+
 
 //        UtilXML utilXML = new UtilXML();
         Button buttonSelecFile = new Button ("guardar xml");
-//        root.getChildren().add(buttonSelecFile);
+        root.getChildren().add(buttonSelecFile);
         buttonSelecFile.setOnAction((t) ->{       
-            UtilXML.guardarDatosXML(stage, Listajarron);
+            UtilXML.guardarDatosXML(stage, jarrones);
+            
         });
         
-        
+//        Jarrones jarronesImport = new Jarrones();
+//        jarronesImport.getListaJarron().add(jarron3);
+
         Button buttonSelectAbrir = new Button ("abrir xml");
-//        root.getChildren().add(buttonSelectAbrir);
+        root.getChildren().add(buttonSelectAbrir);
         buttonSelectAbrir.setOnAction((t) ->{       
-            UtilXML.abrirDatosXML(stage, Listajarron);
+//            UtilXML.abrirDatosXML(stage, jarronesImport);
+            Jarrones jarronesImport = UtilXML.abrirDatosXML(stage);
+            System.out.println(jarronesImport.getListaJarron().size());
+
         });
-        
-        hbox.getChildren().addAll(buttonSelectAbrir, buttonSelecFile );
-        root.getChildren().add(hbox);
+//        
+//        root.getChildren().addAll(buttonSelectAbrir, buttonSelecFile );
+//        root.getChildren().add(root);
         
         
         

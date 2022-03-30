@@ -10,7 +10,7 @@ import javax.xml.bind.Unmarshaller;
 
 public class UtilXML {
     
-    public static void guardarDatosXML(Stage stage, ListaJarron listaJarron){
+    public static void guardarDatosXML(Stage stage, Jarrones listaJarron){
         JAXBContext contexto;
             try {
                 FileChooser fileChooser = new FileChooser();
@@ -18,7 +18,7 @@ public class UtilXML {
                 File fileListaJarron = fileChooser.showSaveDialog(stage);
             
 //            File fileListaLibros = new File("ListaLibros.xml");
-                contexto = JAXBContext.newInstance(Jarron.class);
+                contexto = JAXBContext.newInstance(Jarrones.class);
                 Marshaller marshaller = contexto.createMarshaller();
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
                 marshaller.marshal(listaJarron, System.out);
@@ -29,25 +29,27 @@ public class UtilXML {
             }
     }
             
-    public static void abrirDatosXML(Stage stage, ListaJarron listaJarron){
+    public static Jarrones abrirDatosXML(Stage stage){
         JAXBContext contexto;          
             try {
                 FileChooser fileChooser1 = new FileChooser();
                 fileChooser1.setTitle("abrir en");
-                File fileListaJarron = fileChooser1.showSaveDialog(stage);
+                File fileListaJarron = fileChooser1.showOpenDialog(stage);
                 
-                JAXBContext context = JAXBContext.newInstance(Jarron.class );
+                JAXBContext context = JAXBContext.newInstance(Jarrones.class );
                 Unmarshaller unmarshaller = context.createUnmarshaller();
-                Jarron jarron = (Jarron)unmarshaller.unmarshal(
-                new File("src/Jarron.xml") );
-             
-                System.out.println(jarron.getTitulo());
+                Jarrones jarron = (Jarrones)unmarshaller.unmarshal(fileListaJarron);
+//                System.out.println(jarron.getTitulo());
 //            System.out.println(jarron.getPaginas());
-             
+
+                return jarron;
+                
             } catch (JAXBException e) {
             // TODO Auto-generated catch block
                 e.printStackTrace();
+                return null;
         }
+            
     }
     
 }
