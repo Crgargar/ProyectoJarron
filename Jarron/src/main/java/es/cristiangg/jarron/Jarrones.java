@@ -17,8 +17,11 @@ public class Jarrones {
         this.listasjarron = listasjarron;
     }
     
-    public void UnirJarrones(){
-        Jarrones jarrones = new Jarrones;
+    public void fusionarJarrones(Jarrones jarronesNuevo){
+//        librosOrigen.getListaLibros() <- librosNuevos.getListaJarron()
+        this.getListaJarron().addAll(listasjarron);
+//<- librosNuevos.getListaJarron()
+        
     }
     
 }

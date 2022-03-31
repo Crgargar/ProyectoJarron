@@ -6,8 +6,8 @@ import static javafx.application.Application.launch;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -19,7 +19,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
 //        StackPane root = new StackPane();
-        HBox root = new HBox();
+        VBox root = new VBox();
         root.setAlignment(Pos.CENTER);
         root.setSpacing(10);
         
@@ -63,8 +63,18 @@ public class App extends Application {
 //            UtilXML.abrirDatosXML(stage, jarronesImport);
             Jarrones jarronesImport = UtilXML.abrirDatosXML(stage);
             System.out.println(jarronesImport.getListaJarron().size());
+            
+            jarrones.fusionarJarrones(jarronesImport);
+//            Jarrones.fusionarJarrones(jarrones, jarronesImport);
 
         });
+        
+        TextArea area = new TextArea();
+//        area.setPrefColumnCount(15);
+        area.setPrefHeight(120);
+        area.setPrefWidth(300);
+        root.getChildren().add(area);
+
 //        
 //        root.getChildren().addAll(buttonSelectAbrir, buttonSelecFile );
 //        root.getChildren().add(root);

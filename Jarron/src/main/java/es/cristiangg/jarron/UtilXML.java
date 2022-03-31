@@ -41,7 +41,6 @@ public class UtilXML {
                 Jarrones jarron = (Jarrones)unmarshaller.unmarshal(fileListaJarron);
 //                System.out.println(jarron.getTitulo());
 //            System.out.println(jarron.getPaginas());
-
                 return jarron;
                 
             } catch (JAXBException e) {
