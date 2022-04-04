@@ -84,13 +84,16 @@ public class App extends Application {
         Label label = new Label();
         Label label1 = new Label();        
         Label label2 = new Label();        
-        Label label3 = new Label();        
+//        Label label3 = new Label();        
 
 //        TextArea areaText = new TextArea();
 ////        area.setPrefColumnCount(15);
 //        areaText.setPrefHeight(120);
 //        areaText.setPrefWidth(300);
         root.getChildren().add(label);
+        root.getChildren().add(label1);
+        root.getChildren().add(label2);
+
         
         Button buttonAnterior = new Button ("Anterior");
         root.getChildren().add(buttonAnterior);
@@ -98,10 +101,10 @@ public class App extends Application {
             jarronActual--;
             try {
 //            areaText.setText(jarrones.getListaJarron().get(jarronActual).toString());
-            label.setText(jarrones.getListaJarron().get(jarronActual).getAutor());
-            label1.setText(jarrones.getListaJarron().get(jarronActual).getTitulo());
-            label2.setText(jarrones.getListaJarron().get(jarronActual).getCodigo());
-            label3.setText(jarrones.getListaJarron().get(jarronActual).getFechaPublicacion());
+            label.setText("Titulo: " + jarrones.getListaJarron().get(jarronActual).getTitulo());
+            label1.setText("Autor: " + jarrones.getListaJarron().get(jarronActual).getAutor());
+            label2.setText("Codigo: " + jarrones.getListaJarron().get(jarronActual).getCodigo());
+//            label3.setText(jarrones.getListaJarron().get(jarronActual).getFechaPublicacion());
 
 
             } catch (Exception ex) {
@@ -118,10 +121,10 @@ public class App extends Application {
             jarronActual++;
             try {
 //            areaText.setText(jarrones.getListaJarron().get(jarronActual).toString());
-            label.setText(jarrones.getListaJarron().get(jarronActual).getAutor());
-            label1.setText(jarrones.getListaJarron().get(jarronActual).getTitulo());
-            label2.setText(jarrones.getListaJarron().get(jarronActual).getCodigo());
-            label3.setText(jarrones.getListaJarron().get(jarronActual).getFechaPublicacion());
+            label.setText("Titulo: " + jarrones.getListaJarron().get(jarronActual).getTitulo());
+            label1.setText("Autor: " + jarrones.getListaJarron().get(jarronActual).getAutor());
+            label2.setText("Codigo: " + jarrones.getListaJarron().get(jarronActual).getCodigo());
+//            label3.setText(jarrones.getListaJarron().get(jarronActual).getFechaPublicacion());
 
             } catch (Exception ex) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -131,7 +134,10 @@ public class App extends Application {
             }
         });
         
-        label.setText(jarrones.getListaJarron().get(jarronActual).toString());
+            label.setText("Titulo: " + jarrones.getListaJarron().get(jarronActual).getTitulo());
+            label1.setText("Autor: " + jarrones.getListaJarron().get(jarronActual).getAutor());
+            label2.setText("Codigo: " + jarrones.getListaJarron().get(jarronActual).getCodigo());
+
 
         
         
