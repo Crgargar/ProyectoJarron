@@ -1,6 +1,7 @@
 package es.cristiangg.jarron;
 
 import java.io.File;
+import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.xml.bind.JAXBContext;
@@ -26,6 +27,12 @@ public class UtilXML {
             } catch (JAXBException ex) {
                 System.out.println("Se ha producido un error");
                 ex.printStackTrace();
+                
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Error al guardar los ficheros XML");
+                alert.setContentText("Error en la aplicacion de XML");
+                alert.showAndWait();
+                
             }
     }
             
@@ -46,6 +53,12 @@ public class UtilXML {
             } catch (JAXBException e) {
             // TODO Auto-generated catch block
                 e.printStackTrace();
+                
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Error al unir los ficheros XML");
+                alert.setContentText("Error en la aplicacion de XML");
+                alert.showAndWait();
+                
                 return null;
         }
             

@@ -4,7 +4,7 @@ public class Jarron {
     
     private String titulo;
     private String autor;
-    private String ISBN;
+    private String Codigo;
     private float precio;
     private String fechaPublicacion;
     
@@ -36,12 +36,12 @@ public class Jarron {
         this.autor = autor;
     }
     
-    public String getISBN() {
-        return ISBN;
+    public String getCodigo() {
+        return Codigo;
     }
     
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
+    public void setCodigo(String Codigo) {
+        this.Codigo = Codigo;
     }
     
     public float getPrecio() {
