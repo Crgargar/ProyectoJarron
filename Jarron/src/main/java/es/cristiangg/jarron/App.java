@@ -1,15 +1,24 @@
 package es.cristiangg.jarron;
 
 
+import java.util.Optional;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 
@@ -26,10 +35,25 @@ public class App extends Application {
         VBox root = new VBox();
         root.setAlignment(Pos.CENTER);
         root.setSpacing(20);
-        
+              
         var scene = new Scene(root, 640, 480);
         stage.setScene(scene);
         stage.show();
+        
+        HBox botonesSuperior = new HBox();
+        botonesSuperior.setAlignment(Pos.TOP_CENTER);
+        botonesSuperior.setSpacing(20);
+        root.getChildren().add(botonesSuperior);
+        
+        VBox textoLabel = new VBox();
+        textoLabel.setAlignment(Pos.CENTER);
+        textoLabel.setSpacing(20);
+        root.getChildren().add(textoLabel);
+                      
+        HBox botonesBajo = new HBox();
+        botonesBajo.setAlignment(Pos.CENTER);
+        botonesBajo.setSpacing(20);
+        root.getChildren().add(botonesBajo);
         
         Jarron jarron1 = new Jarron();
         jarron1.setTitulo("Listas en Java");
@@ -57,10 +81,10 @@ public class App extends Application {
         jarrones.getListaJarron().add(jarron3); 
         
 
-
 //        UtilXML utilXML = new UtilXML();
         Button buttonSelecFile = new Button ("guardar xml");
-        root.getChildren().add(buttonSelecFile);
+        buttonSelecFile.setStyle("-fx-background-color : #FF3547;");
+        botonesSuperior.getChildren().add(buttonSelecFile);
         buttonSelecFile.setOnAction((t) ->{       
             UtilXML.guardarDatosXML(stage, jarrones);
             
@@ -70,7 +94,7 @@ public class App extends Application {
 //        jarronesImport.getListaJarron().add(jarron3);
 
         Button buttonSelectAbrir = new Button ("abrir xml");
-        root.getChildren().add(buttonSelectAbrir);
+        botonesSuperior.getChildren().add(buttonSelectAbrir);
         buttonSelectAbrir.setOnAction((t) ->{       
 //            UtilXML.abrirDatosXML(stage, jarronesImport);
             Jarrones jarronesImport = UtilXML.abrirDatosXML(stage);
@@ -90,13 +114,15 @@ public class App extends Application {
 ////        area.setPrefColumnCount(15);
 //        areaText.setPrefHeight(120);
 //        areaText.setPrefWidth(300);
-        root.getChildren().add(label);
-        root.getChildren().add(label1);
-        root.getChildren().add(label2);
+        textoLabel.setMaxSize(200,200);
+        textoLabel.getChildren().addAll(label, label1, label2);
+        
+//        textoLabel.getChildren().add(label1);
+//        textoLabel.getChildren().add(label2);
 
         
         Button buttonAnterior = new Button ("Anterior");
-        root.getChildren().add(buttonAnterior);
+        botonesBajo.getChildren().add(buttonAnterior);
         buttonAnterior.setOnAction((t) ->{
             jarronActual--;
             try {
@@ -108,15 +134,24 @@ public class App extends Application {
 
 
             } catch (Exception ex) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Error, no existen mas XML");
-                alert.setContentText("Error en la aplicacion de XML");
-                alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Error, no existen mas XML para mostrar");
+                alert.setContentText("Error, no existen mas XML para mostrar");
+                ButtonType buttonTypeok = new ButtonType("OK");
+                ButtonType buttonTypeCancelar = new ButtonType("Cancelar");
+                alert.getButtonTypes().setAll(buttonTypeok, buttonTypeCancelar);
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+                    
+                } else {
+                    ButtonType buttonTypeCancel = new ButtonType("Cancelar", ButtonData.CANCEL_CLOSE);
+                    // ... user chose CANCEL or closed the dialog
+                }
             }
         });
 //        
         Button buttonSiguiente = new Button ("Siguiente");
-        root.getChildren().add(buttonSiguiente);
+        botonesBajo.getChildren().add(buttonSiguiente);
         buttonSiguiente.setOnAction((t) ->{
             jarronActual++;
             try {
@@ -127,10 +162,11 @@ public class App extends Application {
 //            label3.setText(jarrones.getListaJarron().get(jarronActual).getFechaPublicacion());
 
             } catch (Exception ex) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Error, no existen mas XML");
-                alert.setContentText("Error en la aplicacion de XML");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error, no existen mas XML para mostrar");
+                alert.setContentText("Error, no existen mas XML para mostrar");
                 alert.showAndWait();
+                
             }
         });
         
@@ -138,6 +174,20 @@ public class App extends Application {
             label1.setText("Autor: " + jarrones.getListaJarron().get(jarronActual).getAutor());
             label2.setText("Codigo: " + jarrones.getListaJarron().get(jarronActual).getCodigo());
 
+            
+        label.setBorder(new Border(new BorderStroke(Color.valueOf("#000000"),
+            BorderStrokeStyle.DASHED,
+            CornerRadii.EMPTY,
+            BorderWidths.DEFAULT)));
+        label1.setBorder(new Border(new BorderStroke(Color.valueOf("#000000"),
+            BorderStrokeStyle.DASHED,
+            CornerRadii.EMPTY,
+            BorderWidths.DEFAULT)));
+        label2.setBorder(new Border(new BorderStroke(Color.valueOf("#000000"),
+            BorderStrokeStyle.DASHED,
+            CornerRadii.EMPTY,
+            BorderWidths.DEFAULT)));
+        
 
         
         
