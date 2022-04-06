@@ -55,7 +55,7 @@ public class UtilXML {
                 e.printStackTrace();
                 
                 Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Error al unir los ficheros XML");
+                alert.setTitle("Error al Abrir los ficheros XML");
                 alert.setContentText("Error en la aplicacion de XML");
                 alert.showAndWait();
                 
