@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+// ArrayList de Jarrones
+
 @XmlRootElement
 public class Jarrones {    
     private ArrayList<Jarron> listasjarron = new ArrayList();
@@ -16,11 +18,11 @@ public class Jarrones {
     public void setListaJarron(ArrayList<Jarron> listajarron) {
         this.listasjarron = listasjarron;
     }
+
+// Fusionar la informacion
     
     public void fusionarJarrones(Jarrones jarronesNuevo){
-//        librosOrigen.getListaLibros() <- librosNuevos.getListaJarron()
         this.getListaJarron().addAll(listasjarron);
-//<- librosNuevos.getListaJarron()
         
     }
     

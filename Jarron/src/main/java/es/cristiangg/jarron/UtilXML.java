@@ -10,6 +10,8 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 public class UtilXML {
+
+// Guardar los datos de la informacion 
     
     public static void guardarDatosXML(Stage stage, Jarrones listaJarron){
         JAXBContext contexto;
@@ -18,12 +20,14 @@ public class UtilXML {
                 fileChooser.setTitle("Guardar en");
                 File fileListaJarron = fileChooser.showSaveDialog(stage);
             
-//            File fileListaLibros = new File("ListaLibros.xml");
                 contexto = JAXBContext.newInstance(Jarrones.class);
                 Marshaller marshaller = contexto.createMarshaller();
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
                 marshaller.marshal(listaJarron, System.out);
                 marshaller.marshal(listaJarron, fileListaJarron);
+                
+// Mensaje de posibles errores
+
             } catch (JAXBException ex) {
                 System.out.println("Se ha producido un error");
                 ex.printStackTrace();
@@ -35,6 +39,8 @@ public class UtilXML {
                 
             }
     }
+
+// Abrir los datos de un XML
             
     public static Jarrones abrirDatosXML(Stage stage){
         JAXBContext contexto;          
@@ -46,9 +52,10 @@ public class UtilXML {
                 JAXBContext context = JAXBContext.newInstance(Jarrones.class );
                 Unmarshaller unmarshaller = context.createUnmarshaller();
                 Jarrones jarron = (Jarrones)unmarshaller.unmarshal(fileListaJarron);
-//                System.out.println(jarron.getTitulo());
-//            System.out.println(jarron.getPaginas());
+
                 return jarron;
+          
+// Mensaje de error
                 
             } catch (JAXBException e) {
             // TODO Auto-generated catch block

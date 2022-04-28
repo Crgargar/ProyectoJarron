@@ -8,7 +8,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Border;
@@ -35,9 +34,6 @@ public class App extends Application {
     public void start(Stage stage) {
         StackPane root = new StackPane();
         root.setStyle("-fx-background-color: #d5ffff;");
-//        VBox root = new VBox();
-//        root.setAlignment(Pos.CENTER);
-//        root.setSpacing(20);
              
         var scene = new Scene(root, 640, 480);
         stage.setScene(scene);
@@ -51,7 +47,6 @@ public class App extends Application {
         CornerRadii.EMPTY,
         new BorderWidths(15))));
         VBox.setSpacing(20);
-
         root.getChildren().add(VBox);
        
 /////////////////////////////// Mostrar por pantalla los jarrones que quiero///////////////////////////////////
@@ -104,9 +99,6 @@ public class App extends Application {
            
         });
        
-//        Jarrones jarronesImport = new Jarrones();
-//        jarronesImport.getListaJarron().add(jarron3);
-
 ///////////////////////////////////// Boton de Abrir XML////////////////////////////////////////////////////
         Button buttonSelectAbrir = new Button ("Abrir xml");
         root.getChildren().add(buttonSelectAbrir);
@@ -116,12 +108,9 @@ public class App extends Application {
             buttonSelectAbrir.setMaxHeight(40);
             buttonSelectAbrir.setMaxWidth(100);
         buttonSelectAbrir.setOnAction((t) ->{      
-//            UtilXML.abrirDatosXML(stage, jarronesImport);
             Jarrones jarronesImport = UtilXML.abrirDatosXML(stage);
             System.out.println(jarronesImport.getListaJarron().size());
-           
             jarrones.fusionarJarrones(jarronesImport);
-//            Jarrones.fusionarJarrones(jarrones, jarronesImport);
 
         });
 
@@ -154,9 +143,6 @@ public class App extends Application {
 /////////// Unir los label que quiero mostrar en pantalla///////
         root.getChildren().addAll(label, label1, label2, label3, label4);
        
-//        textoLabel.getChildren().add(label1);
-//        textoLabel.getChildren().add(label2);
-
 //////////////////////////////////////// Boton anterior/////////////////////////////////////////////////////////
 
         Button buttonAnterior = new Button ("Anterior");
@@ -277,45 +263,7 @@ public class App extends Application {
         BorderStrokeStyle.SOLID,
         CornerRadii.EMPTY,
         new BorderWidths(3))));
-        VBox.getChildren().add(paneHBox);
-
-//// Colocar bordes punteados a los label
-//        label.setBorder(new Border(new BorderStroke(Color.valueOf("#000000"),
-//            BorderStrokeStyle.DASHED,
-//            CornerRadii.EMPTY,
-//            BorderWidths.DEFAULT)));
-//        label1.setBorder(new Border(new BorderStroke(Color.valueOf("#000000"),
-//            BorderStrokeStyle.DASHED,
-//            CornerRadii.EMPTY,
-//            BorderWidths.DEFAULT)));
-//        label2.setBorder(new Border(new BorderStroke(Color.valueOf("#000000"),
-//            BorderStrokeStyle.DASHED,
-//            CornerRadii.EMPTY,
-//            BorderWidths.DEFAULT)));
-
-        ///////////////////////////////////////////////////
-
-//        root.getChildren().addAll(buttonSelectAbrir, buttonSelecFile );
-//        root.getChildren().add(root);
-             
-        //int[] listaNum = new int[10];
-        //Libro[] listaLibros = new Libro[10];
-
-       
-//        // Mostrar el título del tercer libro
-//        System.out.println(listaLibros.get(2).getTitulo());
-//        
-//        // Eliminar de la lista el segundo libro
-//        listaLibros.remove(1);
-//        
-//        // Mostrar todos los títulos de libros de la lista
-//        for(int i=0; i<listaLibros.size(); i++) {
-//            System.out.println(listaLibros.get(i).getTitulo());
-//        }
-//        
-//        for(int i=0; i<listaLibros.size(); i++) {
-//            System.out.println(listaLibros.get(i));
-//        }      
+        VBox.getChildren().add(paneHBox);    
     }
    
     public static void main(String[] args) {
